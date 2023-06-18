@@ -1,12 +1,13 @@
-const removeFromArray = function(arr, removedElement) {
-    let a = arguments[0];
-    let remArr = [];
-    for(let i = 0; i < a.length; i++) {
-        if(a[i] != removedElement) {
-            remArr.push(a[i]);
+const removeFromArray = function(array, ...args) {
+    let normArr = args.sort(); // turn it into a sorted normal array to properly splice
+    for(let i = 0; i < array.length; i++) {
+        for(let arg of normArr) {
+            if(array[i] === arg) {
+                array.splice(i, 1);
+            }
         }
     }
-    return remArr;
+    return array;
 };
 
 // Do not edit below this line
